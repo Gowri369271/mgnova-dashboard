@@ -1,11 +1,8 @@
-'use client';
-
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, Bell, User, LogOut, Settings, MoreVertical, Moon, Sun } from 'lucide-react';
 import { mockUser, notifications } from '@/data/mockData';
 import { useTheme } from '@/contexts/ThemeContext';
-import Image from 'next/image';
 
 export function Navbar() {
   const [isSearchFocused, setIsSearchFocused] = useState(false);
@@ -117,11 +114,10 @@ export function Navbar() {
               className="flex items-center gap-2 p-2 hover:bg-accent/20 rounded-lg transition-colors"
             >
               <div className="relative w-8 h-8 rounded-full overflow-hidden border border-border">
-                <Image
+                <img
                   src={mockUser.avatar}
                   alt={mockUser.name}
-                  fill
-                  className="object-cover"
+                  className="w-full h-full object-cover"
                 />
               </div>
               <span className="text-sm text-foreground hidden sm:block">{mockUser.name.split(' ')[0]}</span>

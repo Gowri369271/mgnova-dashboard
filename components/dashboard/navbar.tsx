@@ -2,14 +2,16 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, Bell, User, LogOut, Settings, MoreVertical } from 'lucide-react';
+import { Search, Bell, User, LogOut, Settings, MoreVertical, Moon, Sun } from 'lucide-react';
 import { mockUser, notifications } from '@/data/mockData';
+import { useTheme } from '@/contexts/ThemeContext';
 import Image from 'next/image';
 
 export function Navbar() {
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [isNotificationOpen, setIsNotificationOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
   const unreadCount = notifications.filter((n) => !n.read).length;
 
   return (
@@ -35,6 +37,22 @@ export function Navbar() {
 
         {/* Right Actions */}
         <div className="flex items-center gap-4 ml-6">
+          {/* Theme Toggle */}
+          <motion.button
+            onClick={toggleTheme}
+            className="p-2 hover:bg-accent/20 rounded-lg transition-colors text-foreground"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <motion.div
+              initial={false}
+              animate={{ rotate: theme === 'dark' ? 180 : 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+            </motion.div>
+          </motion.button>
+
           {/* Notifications */}
           <div className="relative">
             <button

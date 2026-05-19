@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Sidebar } from '@/components/dashboard/sidebar';
-import { Navbar } from '@/components/dashboard/navbar';
+import { NavbarWrapper } from '@/components/dashboard/navbar-wrapper';
 import { AnalyticsCard } from '@/components/analytics/AnalyticsCard';
 import { ProjectCard } from '@/components/projects/ProjectCard';
 import { ProposalTable } from '@/components/proposals/ProposalTable';
@@ -39,7 +39,7 @@ export default function Dashboard() {
       {/* Main Content */}
       <main className="flex-1 ml-80">
         {/* Navbar */}
-        <Navbar />
+        <NavbarWrapper />
 
         {/* Page Content */}
         <motion.div

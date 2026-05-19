@@ -1,12 +1,16 @@
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ProposalTable } from '@/components/proposals/ProposalTable';
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { Plus, Sparkles, X } from 'lucide-react';
 import { AIProposalGenerator } from '@/components/proposals/AIProposalGenerator';
 
 export default function Proposals() {
   const [isGeneratorOpen, setIsGeneratorOpen] = useState(false);
   const [statusFilter, setStatusFilter] = useState('all');
+  
+  const handleOpenGenerator = useCallback(() => {
+    setIsGeneratorOpen(true);
+  }, []);
 
   const statuses = ['all', 'pending', 'accepted', 'rejected'];
 
@@ -18,15 +22,14 @@ export default function Proposals() {
             <h1 className="text-3xl font-bold text-foreground">Proposals</h1>
             <p className="text-muted-foreground mt-1">Manage your submitted proposals</p>
           </div>
-          <motion.button
-            onClick={() => setIsGeneratorOpen(true)}
-            className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg font-medium hover:opacity-90 transition-opacity"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+          <button
+            onClick={handleOpenGenerator}
+            type="button"
+            className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg font-medium hover:opacity-90 transition-opacity cursor-pointer"
           >
             <Sparkles size={18} />
             Generate with AI
-          </motion.button>
+          </button>
         </div>
 
         {/* Status Filters */}
@@ -51,11 +54,9 @@ export default function Proposals() {
       <ProposalTable />
 
       {/* AI Proposal Generator Modal */}
-      <AnimatePresence>
-        {isGeneratorOpen && (
-          <AIProposalGenerator onClose={() => setIsGeneratorOpen(false)} />
-        )}
-      </AnimatePresence>
+      {isGeneratorOpen && (
+        <AIProposalGenerator onClose={() => setIsGeneratorOpen(false)} />
+      )}
     </motion.div>
   );
 }

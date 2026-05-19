@@ -4,7 +4,7 @@ import { NavbarWrapper } from '@/components/dashboard/navbar-wrapper';
 
 export function DashboardLayout() {
   return (
-    <div className="flex">
+    <div className="flex relative min-h-screen">
       <Sidebar />
       <main className="flex-1 ml-80">
         <NavbarWrapper />

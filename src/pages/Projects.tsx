@@ -1,11 +1,14 @@
 import { motion } from 'framer-motion';
 import { ProjectCard } from '@/components/projects/ProjectCard';
+import { AIProposalGenerator } from '@/components/proposals/AIProposalGenerator';
 import { projects } from '@/data/mockData';
 import { useState } from 'react';
 
 export default function Projects() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedFilter, setSelectedFilter] = useState('all');
+  const [isGeneratorOpen, setIsGeneratorOpen] = useState(false);
+  const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
 
   const filters = ['all', 'active', 'completed', 'high-budget'];
   
@@ -13,6 +16,11 @@ export default function Projects() {
     const matchesSearch = project.title.toLowerCase().includes(searchTerm.toLowerCase());
     return matchesSearch;
   });
+
+  const handleGenerateProposal = (project: typeof projects[0]) => {
+    setSelectedProject(project);
+    setIsGeneratorOpen(true);
+  };
 
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }}>
@@ -50,7 +58,12 @@ export default function Projects() {
       {/* Projects Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredProjects.map((project, index) => (
-          <ProjectCard key={project.id} {...project} index={index} />
+          <ProjectCard 
+            key={project.id} 
+            {...project} 
+            index={index}
+            onGenerateProposal={() => handleGenerateProposal(project)}
+          />
         ))}
       </div>
 
@@ -58,6 +71,15 @@ export default function Projects() {
         <div className="text-center py-12">
           <p className="text-muted-foreground">No projects found matching your criteria</p>
         </div>
+      )}
+
+      {/* AI Proposal Generator Modal */}
+      {isGeneratorOpen && selectedProject && (
+        <AIProposalGenerator 
+          onClose={() => setIsGeneratorOpen(false)} 
+          projectTitle={selectedProject.title}
+          projectBudget={selectedProject.budget}
+        />
       )}
     </motion.div>
   );

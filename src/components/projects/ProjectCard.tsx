@@ -1,27 +1,29 @@
-'use client';
-
 import { motion } from 'framer-motion';
 import { ArrowRight, Zap } from 'lucide-react';
 
 interface ProjectCardProps {
   id: string;
   title: string;
+  client: string;
   budget: string;
   timeline: string;
   skills: string[];
   matchScore: number;
   description: string;
   index?: number;
+  onGenerateProposal?: () => void;
 }
 
 export function ProjectCard({
   title,
+  client,
   budget,
   timeline,
   skills,
   matchScore,
   description,
   index = 0,
+  onGenerateProposal,
 }: ProjectCardProps) {
   return (
     <motion.div
@@ -33,7 +35,10 @@ export function ProjectCard({
     >
       {/* Header */}
       <div className="mb-4">
-        <h3 className="font-bold text-foreground text-lg mb-2 line-clamp-2">{title}</h3>
+        <div className="flex items-center justify-between mb-2">
+          <h3 className="font-bold text-foreground text-lg line-clamp-2">{title}</h3>
+        </div>
+        <p className="text-primary text-sm font-medium mb-1">{client}</p>
         <p className="text-muted-foreground text-sm line-clamp-2">{description}</p>
       </div>
 
@@ -105,6 +110,8 @@ export function ProjectCard({
 
       {/* CTA Button */}
       <motion.button
+        onClick={onGenerateProposal}
+        type="button"
         className="mt-auto w-full bg-primary text-primary-foreground py-2 rounded-lg font-medium flex items-center justify-center gap-2 hover:shadow-lg transition-all"
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}

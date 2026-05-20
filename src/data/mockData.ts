@@ -1,8 +1,8 @@
 export const mockUser = {
   id: '1',
-  name: 'Alex Johnson',
-  email: 'alex@mgnova.dev',
-  avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Alex',
+  name: 'Zera',
+  email: 'zera@mgnova.dev',
+  avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Zera',
   reputation: 4.8,
   badges: ['Top Rated', 'Fast Delivery'],
   profileCompletion: 92,
@@ -21,6 +21,7 @@ export const projects = [
   {
     id: '1',
     title: 'E-commerce Platform Redesign',
+    client: 'TechCorp Inc.',
     budget: '$5,000 - $8,000',
     timeline: '3-4 months',
     skills: ['React', 'Next.js', 'Tailwind CSS'],
@@ -30,6 +31,7 @@ export const projects = [
   {
     id: '2',
     title: 'Mobile App Development',
+    client: 'StartupXYZ',
     budget: '$3,000 - $5,000',
     timeline: '2-3 months',
     skills: ['React Native', 'Firebase', 'TypeScript'],
@@ -39,6 +41,7 @@ export const projects = [
   {
     id: '3',
     title: 'API Integration & Optimization',
+    client: 'CloudServices Ltd.',
     budget: '$2,000 - $3,500',
     timeline: '4-6 weeks',
     skills: ['Node.js', 'PostgreSQL', 'REST APIs'],
@@ -48,6 +51,7 @@ export const projects = [
   {
     id: '4',
     title: 'Data Analytics Dashboard',
+    client: 'DataViz Corp',
     budget: '$4,000 - $6,000',
     timeline: '6-8 weeks',
     skills: ['React', 'D3.js', 'Python', 'SQL'],
@@ -57,6 +61,7 @@ export const projects = [
   {
     id: '5',
     title: 'Brand Website Development',
+    client: 'Creative Agency Co.',
     budget: '$3,500 - $5,500',
     timeline: '6-8 weeks',
     skills: ['Next.js', 'Tailwind CSS', 'Figma'],
@@ -66,6 +71,7 @@ export const projects = [
   {
     id: '6',
     title: 'Performance Optimization',
+    client: 'HighSpeed Media',
     budget: '$1,500 - $2,500',
     timeline: '2-3 weeks',
     skills: ['Web Performance', 'SEO', 'DevTools'],

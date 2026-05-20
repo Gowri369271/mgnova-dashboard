@@ -4,12 +4,14 @@ import { X, Sparkles, Send, RefreshCw, Edit2, Check } from 'lucide-react';
 
 interface AIProposalGeneratorProps {
   onClose: () => void;
+  projectTitle?: string;
+  projectBudget?: string;
 }
 
-export function AIProposalGenerator({ onClose }: AIProposalGeneratorProps) {
+export function AIProposalGenerator({ onClose, projectTitle: initialTitle, projectBudget: initialBudget }: AIProposalGeneratorProps) {
   const [step, setStep] = useState<'input' | 'generating' | 'result'>('input');
-  const [projectTitle, setProjectTitle] = useState('');
-  const [budget, setBudget] = useState('');
+  const [projectTitle, setProjectTitle] = useState(initialTitle || '');
+  const [budget, setBudget] = useState(initialBudget || '');
   const [generatedProposal, setGeneratedProposal] = useState('');
   const [isEditing, setIsEditing] = useState(false);
 

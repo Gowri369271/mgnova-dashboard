@@ -80,7 +80,7 @@ export function Sidebar() {
           transition={{ duration: 0.3 }}
           className="text-xs text-sidebar-foreground/60 text-center"
         >
-          {isOpen && <p>© 2024 MGNOVA</p>}
+          {isOpen && <p>© 2026 MGNOVA</p>}
         </motion.div>
       </div>
     </motion.aside>
